@@ -1,10 +1,12 @@
 .columns > div {
   display: flex;
   flex-direction: column;
+  gap: 24px;
 }
 
 .columns img {
   width: 100%;
+  border-radius: 4px;
 }
 
 .columns > div > div {
@@ -19,11 +21,30 @@
   display: block;
 }
 
+.columns h2 {
+  margin-top: 0;
+  color: var(--color-dark-brown);
+}
+
+.columns p {
+  line-height: 1.6;
+}
+
+.columns .button {
+  background-color: var(--color-terracotta);
+  border-color: var(--color-terracotta);
+}
+
+.columns .button:hover {
+  background-color: #a3432a;
+  border-color: #a3432a;
+}
+
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
     flex-direction: unset;
-    gap: 24px;
+    gap: 32px;
   }
 
   .columns > div > div {

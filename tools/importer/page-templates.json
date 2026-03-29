@@ -1,0 +1,75 @@
+{
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://publish-p45403-e1547974.adobeaemcloud.com/us/en.html"
+      ],
+      "description": "Frescopa homepage with hero, product features, and coffee bean tasting booking",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [".teaser:first-child"]
+        },
+        {
+          "name": "columns",
+          "instances": [".frescopa-banner"]
+        },
+        {
+          "name": "coffee-tasting",
+          "instances": [".location-finder"]
+        },
+        {
+          "name": "cards",
+          "instances": [".flexcolummns"]
+        },
+        {
+          "name": "hero-offer",
+          "instances": [".contentfragment.cfoffer"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-hero",
+          "name": "Hero Section",
+          "selector": ".teaser:first-child",
+          "style": null,
+          "blocks": ["hero"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-banner",
+          "name": "Subscription Banner Section",
+          "selector": ".frescopa-banner",
+          "style": "beige",
+          "blocks": ["columns"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-location-finder",
+          "name": "Location Finder Section",
+          "selector": ".location-finder",
+          "style": null,
+          "blocks": ["coffee-tasting"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-two-column-teasers",
+          "name": "Two-Column Cards Section",
+          "selector": ".flexcolummns",
+          "style": null,
+          "blocks": ["cards"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-offer",
+          "name": "Offer Banner Section",
+          "selector": ".contentfragment.cfoffer",
+          "style": null,
+          "blocks": ["hero-offer"],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}

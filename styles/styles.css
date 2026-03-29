@@ -12,16 +12,24 @@
 
 :root {
   /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --background-color: #fff;
+  --light-color: #f5ece0;
+  --dark-color: #3d2c1e;
+  --text-color: #000;
+  --link-color: #27647d;
+  --link-hover-color: #1d4f63;
+
+  /* brand colors */
+  --color-primary: #a03532;
+  --color-accent: #eaa33a;
+  --color-terracotta: #c1512e;
+  --color-orange: #dc6e52;
+  --color-dark-brown: #3d2c1e;
+  --color-beige: #f5ece0;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --heading-font-family: georgia, georgia-fallback, "Times New Roman", times, serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -42,9 +50,9 @@
 
 /* fallback fonts */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
+  font-family: georgia-fallback;
+  size-adjust: 101%;
+  src: local('Times New Roman');
 }
 
 @font-face {
@@ -110,6 +118,7 @@ h6 {
   font-weight: 600;
   line-height: 1.25;
   scroll-margin: 40px;
+  color: var(--color-dark-brown);
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
@@ -199,8 +208,8 @@ button.button:disabled {
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
+  border-color: var(--color-terracotta);
+  background-color: var(--color-terracotta);
   color: var(--background-color);
 }
 
@@ -226,9 +235,9 @@ button.button.primary:disabled:focus-visible {
 
 a.button.secondary,
 button.button.secondary {
-  border-color: var(--text-color);
+  border-color: var(--color-terracotta);
   background-color: transparent;
-  color: var(--text-color);
+  color: var(--color-terracotta);
 }
 
 a.button.secondary:hover,

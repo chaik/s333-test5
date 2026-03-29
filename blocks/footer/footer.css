@@ -11,10 +11,52 @@ footer .footer > div {
 
 footer .footer p {
   margin: 0;
+  line-height: 1.8;
+}
+
+footer .footer > div:first-child {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+footer .footer > div:last-child {
+  border-top: 1px solid #ddd;
+  padding: 16px 24px;
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+}
+
+footer .footer > div:first-child > div:first-child {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+footer .footer > div:first-child > div:first-child img {
+  width: 100px;
+  height: auto;
+}
+
+footer .footer > div:first-child > div:not(:first-child) p:first-child {
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-dark-brown);
+}
+
+@media (width >= 600px) {
+  footer .footer > div:first-child {
+    grid-template-columns: 2fr repeat(5, 1fr);
+  }
 }
 
 @media (width >= 900px) {
   footer .footer > div {
     padding: 40px 32px 24px;
+  }
+
+  footer .footer > div:last-child {
+    padding: 16px 32px;
   }
 }

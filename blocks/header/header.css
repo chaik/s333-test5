@@ -4,6 +4,7 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
+  border-bottom: 1px solid #ddd;
 }
 
 header nav {
@@ -55,7 +56,12 @@ header nav p {
 }
 
 header nav a:any-link {
-  color: currentcolor;
+  color: var(--color-dark-brown);
+  text-decoration: none;
+}
+
+header nav a:any-link:hover {
+  text-decoration: underline;
 }
 
 /* hamburger */

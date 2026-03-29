@@ -1,0 +1,89 @@
+.hero-offer-container .hero-offer-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-offer {
+  position: relative;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  padding: 40px 24px;
+}
+
+.hero-offer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 35%);
+}
+
+.hero-offer .hero-offer-bg {
+  display: none;
+}
+
+.hero-offer .hero-offer-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  max-width: 600px;
+}
+
+.hero-offer .hero-offer-pretitle {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: rgb(255 255 255 / 80%);
+  margin: 0 0 4px;
+}
+
+.hero-offer .hero-offer-detail {
+  font-size: 18px;
+  color: #eaa33a;
+  font-weight: 600;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.hero-offer h2 {
+  color: white;
+  font-size: 36px;
+  line-height: 1.1;
+  margin: 0 0 20px;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.hero-offer .button-wrapper {
+  margin: 0;
+}
+
+.hero-offer a.button {
+  background-color: #c1512e;
+  border-color: #c1512e;
+  color: white;
+  border-radius: 23px;
+  padding: 12px 28px;
+  font-size: 15px;
+}
+
+.hero-offer a.button:hover {
+  background-color: #a3432a;
+}
+
+@media (width >= 900px) {
+  .hero-offer {
+    min-height: 400px;
+    padding: 60px 32px;
+  }
+
+  .hero-offer .hero-offer-content {
+    padding-left: 40px;
+    max-width: 700px;
+  }
+
+  .hero-offer h2 {
+    font-size: 48px;
+  }
+}

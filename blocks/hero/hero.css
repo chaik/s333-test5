@@ -4,34 +4,76 @@
 }
 
 .hero {
-  position: relative;
-  padding: 40px 24px;
+  background-color: #eaa33a;
+  display: grid;
+  grid-template-columns: 1fr;
   min-height: 300px;
+  overflow: hidden;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+.hero .hero-content {
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+.hero .hero-content p:first-child {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 0;
+  opacity: 0.9;
 }
 
-.hero img {
-  object-fit: cover;
+.hero .hero-content h3 {
+  color: white;
+  font-size: 28px;
+  margin-top: 8px;
+  line-height: 1.2;
+}
+
+.hero .hero-content .button-wrapper {
+  margin-top: 16px;
+}
+
+.hero .hero-content a.button {
+  background-color: #27647d;
+  border-color: #27647d;
+  color: white;
+  border-radius: 23px;
+  padding: 10px 24px;
+  font-size: 16px;
+}
+
+.hero .hero-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+.hero .hero-image picture,
+.hero .hero-image img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    grid-template-columns: 1fr 1fr;
+    min-height: 350px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .hero .hero-content {
+    padding: 60px 0 60px 32px;
+  }
+
+  .hero .hero-content h3 {
+    font-size: 36px;
   }
 }

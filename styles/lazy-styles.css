@@ -1,1 +1,7 @@
 /* add global styles that can be loaded post LCP here */
+
+main .section.beige {
+  background-color: var(--color-beige);
+  margin: 0;
+  padding: 40px 0;
+}
