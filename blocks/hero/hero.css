@@ -65,8 +65,8 @@
   .hero {
     grid-template-columns: 1fr 1fr;
     min-height: 350px;
-    max-width: 1200px;
-    margin: auto;
+    max-width: unset;
+    padding-inline: max(0px, calc((100% - 1200px) / 2));
   }
 
   .hero .hero-content {

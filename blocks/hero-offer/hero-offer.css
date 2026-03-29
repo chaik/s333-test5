@@ -17,7 +17,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgb(0 0 0 / 35%);
+  background: rgb(0 0 0 / 25%);
 }
 
 .hero-offer .hero-offer-bg {

@@ -7,6 +7,9 @@ footer .footer > div {
   margin: auto;
   max-width: 1200px;
   padding: 40px 24px 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
 }
 
 footer .footer p {
@@ -14,49 +17,46 @@ footer .footer p {
   line-height: 1.8;
 }
 
-footer .footer > div:first-child {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-
-footer .footer > div:last-child {
-  border-top: 1px solid #ddd;
-  padding: 16px 24px;
-  text-align: center;
-  font-size: 12px;
-  color: #666;
-}
-
-footer .footer > div:first-child > div:first-child {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-footer .footer > div:first-child > div:first-child img {
+/* Company info section */
+footer .footer > div > .section:first-child img {
   width: 100px;
   height: auto;
 }
 
-footer .footer > div:first-child > div:not(:first-child) p:first-child {
+footer .footer > div > .section:first-child p strong {
+  font-size: var(--body-font-size-m);
+  color: var(--color-dark-brown);
+}
+
+/* Link column sections - bold title for first p */
+footer .footer > div > .section:not(:first-child, :last-child) p:first-child {
   font-weight: 700;
   margin-bottom: 8px;
   color: var(--color-dark-brown);
 }
 
+/* Legal strip section */
+footer .footer > div > .section:last-child {
+  grid-column: 1 / -1;
+  border-top: 1px solid #ddd;
+  padding-top: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+}
+
 @media (width >= 600px) {
-  footer .footer > div:first-child {
+  footer .footer > div {
     grid-template-columns: 2fr repeat(5, 1fr);
+  }
+
+  footer .footer > div > .section:last-child {
+    grid-column: 1 / -1;
   }
 }
 
 @media (width >= 900px) {
   footer .footer > div {
     padding: 40px 32px 24px;
-  }
-
-  footer .footer > div:last-child {
-    padding: 16px 32px;
   }
 }
