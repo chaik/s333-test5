@@ -120,18 +120,11 @@ export default function decorate(block) {
   async function getAvailability(zipcode) {
     if (USE_MOCK_DATA) return getMockAvailability();
 
-    //const url = `https://publish-p45403-e1547974.adobeaemcloud.com/compute/coffee-tasting-booking?zipcode=${encodeURIComponent(zipcode)}`;
-   // const booking_service_url = "https://compute-backend-p188602-d568746-first.adobeaemcloud.com";
-    const booking_service_url = "https://s333-frescopa-test1.testaemcloud.com";
-    
+    const booking_service_url = "https://s333-frescopa-test1.testaemcloud.com";    
     const url = `${booking_service_url}/compute/coffee-tasting-booking?zipcode=${encodeURIComponent(zipcode)}`;
 
     const response = await fetch(url); 
-    /*, {
-      headers: {
-        'x-api-key': '15x9hmBRjBD4CUSd7Q37kpMMf2EXRtYBJlrnnSNrohAe8GBpZbXkXxro3Q3rqVFN',
-      },
-    });*/
+
     if (!response.ok) throw new Error(`Failed to fetch availability: ${response.status}`);
     const data = await response.json();
     return data.locations;
