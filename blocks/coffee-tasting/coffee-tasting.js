@@ -92,7 +92,7 @@ export default function decorate(block) {
 
   // --- INTERACTIVE BEHAVIOR ---
 
-  const USE_MOCK_DATA = false;
+  const USE_MOCK_DATA = true;
 
   function getMockAvailability() {
     return [
