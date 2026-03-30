@@ -92,28 +92,37 @@ export default function decorate(block) {
 
   // --- INTERACTIVE BEHAVIOR ---
 
-  // Mock data function
-  function getAvailability() {
-    return [
-      {
-        name: 'Frescopa Flagship - Downtown',
-        address: '123 Main Street',
-        distance: '0.8 mi',
-        slots: ['10:00 AM', '11:30 AM', '2:00 PM', '4:00 PM'],
+  async function getAvailability(zipcode) {
+    // const mockData = [
+    //   {
+    //     name: 'Frescopa Flagship - Downtown',
+    //     address: '123 Main Street',
+    //     distance: '0.8 mi',
+    //     slots: ['10:00 AM', '11:30 AM', '2:00 PM', '4:00 PM'],
+    //   },
+    //   {
+    //     name: 'Frescopa Roastery',
+    //     address: '456 Oak Avenue',
+    //     distance: '1.2 mi',
+    //     slots: ['9:00 AM', '1:00 PM', '3:30 PM'],
+    //   },
+    //   {
+    //     name: 'Frescopa Express',
+    //     address: '789 Park Boulevard',
+    //     distance: '2.5 mi',
+    //     slots: ['10:30 AM', '12:00 PM', '5:00 PM'],
+    //   },
+    // ];
+    // return mockData;
+
+    const url = `https://publish-p45403-e1547974.adobeaemcloud.com/compute/coffee-tasting-booking?zipcode=${encodeURIComponent(zipcode)}`;
+    const response = await fetch(url, {
+      headers: {
+        'x-api-key': '15x9hmBRjBD4CUSd7Q37kpMMf2EXRtYBJlrnnSNrohAe8GBpZbXkXxro3Q3rqVFN',
       },
-      {
-        name: 'Frescopa Roastery',
-        address: '456 Oak Avenue',
-        distance: '1.2 mi',
-        slots: ['9:00 AM', '1:00 PM', '3:30 PM'],
-      },
-      {
-        name: 'Frescopa Express',
-        address: '789 Park Boulevard',
-        distance: '2.5 mi',
-        slots: ['10:30 AM', '12:00 PM', '5:00 PM'],
-      },
-    ];
+    });
+    if (!response.ok) throw new Error(`Failed to fetch availability: ${response.status}`);
+    return response.json();
   }
 
   let selectedLocation = null;
@@ -155,19 +164,24 @@ export default function decorate(block) {
   }
 
   // Search button click
-  searchBtn.addEventListener('click', () => {
+  searchBtn.addEventListener('click', async () => {
     const zip = input.value.trim();
     if (!zip) {
       input.focus();
       return;
     }
-    const locations = getAvailability(zip);
     selectedLocation = null;
     selectedSlot = null;
     const confirmBtn = modal.querySelector('.coffee-tasting-confirm-btn');
     confirmBtn.disabled = true;
-    renderResults(locations, zip);
-    overlay.hidden = false;
+    try {
+      const locations = await getAvailability(zip);
+      renderResults(locations, zip);
+      overlay.hidden = false;
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('Error fetching availability:', e);
+    }
   });
 
   // Enter key on input
