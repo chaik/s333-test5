@@ -100,19 +100,19 @@ export default function decorate(block) {
         name: 'Frescopa Flagship - Downtown',
         address: '123 Main Street',
         distance: '0.8 mi',
-        slots: ['10:00 AM', '11:30 AM', '2:00 PM', '4:00 PM'],
+        times: ['10:00 AM', '11:30 AM', '2:00 PM', '4:00 PM'],
       },
       {
         name: 'Frescopa Roastery',
         address: '456 Oak Avenue',
         distance: '1.2 mi',
-        slots: ['9:00 AM', '1:00 PM', '3:30 PM'],
+        times: ['9:00 AM', '1:00 PM', '3:30 PM'],
       },
       {
         name: 'Frescopa Express',
         address: '789 Park Boulevard',
         distance: '2.5 mi',
-        slots: ['10:30 AM', '12:00 PM', '5:00 PM'],
+        times: ['10:30 AM', '12:00 PM', '5:00 PM'],
       },
     ];
   }
@@ -133,7 +133,8 @@ export default function decorate(block) {
       },
     });*/
     if (!response.ok) throw new Error(`Failed to fetch availability: ${response.status}`);
-    return response.json();
+    const data = await response.json();
+    return data.locations;
   }
 
   let selectedLocation = null;
@@ -155,7 +156,7 @@ export default function decorate(block) {
           <p class="coffee-tasting-location-distance">${loc.distance}</p>
         </div>
         <div class="coffee-tasting-time-slots">
-          ${loc.slots.map((slot) => `<button type="button" class="coffee-tasting-slot" data-location="${loc.name}" data-address="${loc.address}" data-slot="${slot}">${slot}</button>`).join('')}
+          ${loc.times.map((slot) => `<button type="button" class="coffee-tasting-slot" data-location="${loc.name}" data-address="${loc.address}" data-slot="${slot}">${slot}</button>`).join('')}
         </div>
       `;
       results.append(card);
