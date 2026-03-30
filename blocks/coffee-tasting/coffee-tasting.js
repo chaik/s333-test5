@@ -92,35 +92,46 @@ export default function decorate(block) {
 
   // --- INTERACTIVE BEHAVIOR ---
 
-  async function getAvailability(zipcode) {
-    // const mockData = [
-    //   {
-    //     name: 'Frescopa Flagship - Downtown',
-    //     address: '123 Main Street',
-    //     distance: '0.8 mi',
-    //     slots: ['10:00 AM', '11:30 AM', '2:00 PM', '4:00 PM'],
-    //   },
-    //   {
-    //     name: 'Frescopa Roastery',
-    //     address: '456 Oak Avenue',
-    //     distance: '1.2 mi',
-    //     slots: ['9:00 AM', '1:00 PM', '3:30 PM'],
-    //   },
-    //   {
-    //     name: 'Frescopa Express',
-    //     address: '789 Park Boulevard',
-    //     distance: '2.5 mi',
-    //     slots: ['10:30 AM', '12:00 PM', '5:00 PM'],
-    //   },
-    // ];
-    // return mockData;
+  const USE_MOCK_DATA = false;
 
-    const url = `https://publish-p45403-e1547974.adobeaemcloud.com/compute/coffee-tasting-booking?zipcode=${encodeURIComponent(zipcode)}`;
-    const response = await fetch(url, {
+  function getMockAvailability() {
+    return [
+      {
+        name: 'Frescopa Flagship - Downtown',
+        address: '123 Main Street',
+        distance: '0.8 mi',
+        slots: ['10:00 AM', '11:30 AM', '2:00 PM', '4:00 PM'],
+      },
+      {
+        name: 'Frescopa Roastery',
+        address: '456 Oak Avenue',
+        distance: '1.2 mi',
+        slots: ['9:00 AM', '1:00 PM', '3:30 PM'],
+      },
+      {
+        name: 'Frescopa Express',
+        address: '789 Park Boulevard',
+        distance: '2.5 mi',
+        slots: ['10:30 AM', '12:00 PM', '5:00 PM'],
+      },
+    ];
+  }
+
+  async function getAvailability(zipcode) {
+    if (USE_MOCK_DATA) return getMockAvailability();
+
+    //const url = `https://publish-p45403-e1547974.adobeaemcloud.com/compute/coffee-tasting-booking?zipcode=${encodeURIComponent(zipcode)}`;
+   // const booking_service_url = "https://compute-backend-p188602-d568746-first.adobeaemcloud.com";
+    const booking_service_url = "https://s333-frescopa-test1.testaemcloud.com";
+    
+    const url = `${booking_service_url}/compute/coffee-tasting-booking?zipcode=${encodeURIComponent(zipcode)}`;
+
+    const response = await fetch(url); 
+    /*, {
       headers: {
         'x-api-key': '15x9hmBRjBD4CUSd7Q37kpMMf2EXRtYBJlrnnSNrohAe8GBpZbXkXxro3Q3rqVFN',
       },
-    });
+    });*/
     if (!response.ok) throw new Error(`Failed to fetch availability: ${response.status}`);
     return response.json();
   }
